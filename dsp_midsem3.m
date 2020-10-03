@@ -1,0 +1,47 @@
+clc;
+clear;
+fm = 60;
+T = 1./fm;
+fs1 = 80;
+fs2 = 400;
+fs3 = 800;
+t = 0:0.00001:3*T;
+
+y1 = 5*cos(120*pi*t);
+n1 = 0:1./fs1:3*T;
+n2 = 0:1./fs2:3*T;
+n3 = 0:1./fs3:3*T;
+
+subplot(3,2,3);
+plot(t,y1,'r');
+xlabel('Time');
+ylabel('Amplitude');
+title('Original Signal(f=60Hz)');
+
+y2 = 5*cos(120*pi*n1);
+y3 = 5*cos(120*pi*n2);
+y4 = 5*cos(120*pi*n3);
+
+subplot(3,2,2);
+stem(n1,y2,'b');
+title('fs = 80Hz, under-sampled(Cannot be recovered)');
+hold on;
+plot(t,y1,'r');
+xlabel('Time');
+ylabel('Amplitude');
+
+subplot(3,2,4);
+stem(n2,y3,'b');
+title('fs = 400Hz, Can be recovered!');
+hold on;
+plot(t,y1,'r');
+xlabel('Time');
+ylabel('Amplitude');
+
+subplot(3,2,6);
+stem(n3,y4,'b');
+title('fs = 800Hz, Can be recovered!');
+hold on;
+plot(t,y1,'r');
+xlabel('Time');
+ylabel('Amplitude');
