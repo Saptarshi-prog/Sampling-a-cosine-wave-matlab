@@ -2,9 +2,9 @@ clc;
 clear;
 fm = 60;
 T = 1./fm;
-fs1 = 80;
-fs2 = 400;
-fs3 = 800;
+fs1 = 80;      %Under sampled case.
+fs2 = 120;     %Nyquist Rate.
+fs3 = 800;     %over sampled case.
 t = 0:0.00001:3*T;
 
 y1 = 5*cos(120*pi*t);
@@ -32,7 +32,7 @@ ylabel('Amplitude');
 
 subplot(3,2,4);
 stem(n2,y3,'b');
-title('fs = 400Hz, Can be recovered!');
+title('fs = 120Hz, Can be recovered!(critical)');
 hold on;
 plot(t,y1,'r');
 xlabel('Time');
@@ -40,7 +40,7 @@ ylabel('Amplitude');
 
 subplot(3,2,6);
 stem(n3,y4,'b');
-title('fs = 800Hz, Can be recovered!');
+title('fs = 800Hz, Can be recovered!(oversampled)');
 hold on;
 plot(t,y1,'r');
 xlabel('Time');
